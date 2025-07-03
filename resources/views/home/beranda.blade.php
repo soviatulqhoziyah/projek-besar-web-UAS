@@ -114,16 +114,24 @@
     <div class="shape"></div>
     
     <div class="hero-content">
-        <h1>InfoEvent PNP</h1>
-        <p>Platform informasi kegiatan dan event mahasiswa<br>Politeknik Negeri Padang</p>
-        
-        <div>
+        <h1>Adkesmmation</h1>
+        <p>
+            Temukan event, beasiswa, dan ruang aspirasi di satu tempat.<br>
+            Cepat, mudah, dan bermanfaat.
+        </p>
+    
+        <div class="mt-4">
+            <a href="{{ route('beasiswa.index') }}" class="btn-outline">
+                <i class="fas fa-graduation-cap me-2"></i>Lihat Beasiswa
+            </a>
             <a href="{{ route('home.homepage') }}" class="btn-gradient">
                 <i class="fas fa-calendar-alt me-2"></i>Lihat Event
             </a>
+            
             <a href="{{ route('home.kontak') }}" class="btn-outline">
                 <i class="fas fa-phone me-2"></i>Hubungi Kami
             </a>
         </div>
     </div>
+    
 </section>

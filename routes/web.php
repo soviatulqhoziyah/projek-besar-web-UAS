@@ -29,14 +29,14 @@ Route::get('/beranda', function () {
 
 // ⇢ HALAMAN YANG BUTUH $events (dulu root “/”)
 Route::get('/homepage', [SoviaEventController::class, 'index'])
-     ->name('home.homepage');
+    ->name('home.homepage');
 
 // Detail satu event
 Route::get('/sovia-events/{id}', [SoviaEventController::class, 'show'])
-     ->name('home.detail');
+    ->name('home.detail');
 
 // Kontak
-Route::get ('/kontak', [KontakController::class, 'index'])->name('home.kontak');
+Route::get('/kontak', [KontakController::class, 'index'])->name('home.kontak');
 Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.kirim');
 
 /* -----------------------------------------------------------
@@ -44,9 +44,9 @@ Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.kirim')
 |------------------------------------------------------------
 */
 
-Route::get ('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])          ->name('login.submit');
-Route::get ('/logout', [AuthController::class, 'logout'])        ->name('logout');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 /* -----------------------------------------------------------
 |  ADMIN ‑ only
@@ -57,43 +57,48 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
 
     // data_events (link di sidebar, misalnya)
     Route::get('/admin/data_events', [AdminController::class, 'data'])
-         ->name('admin.data_events');
+        ->name('admin.data_events');
 
     // POST logout di dalam area admin
     Route::post('/logout', function () {
         Auth::logout();
         return redirect()->route('home.beranda')
-                         ->with('success', 'Berhasil logout!');
+            ->with('success', 'Berhasil logout!');
     })->name('logout');
 
     /* ---- grup prefix /admin -------------------------------- */
-    
 
-        Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
+
+    Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
 
 
         Route::get('/data_events', [AdminController::class, 'data'])
-             ->name('data_events');
+            ->name('data_events');
 
         // CRUD full SoviaEventController  (/admin/events/…)
         Route::resource('events', SoviaEventController::class)
-             ->parameters(['events' => 'id'])
-             ->names('events');
+            ->parameters(['events' => 'id'])
+            ->names('events');
 
         // POST logout (duplikat bawaan Anda – tetap dipertahankan)
         Route::post('/logout', function () {
             Auth::logout();
             return redirect()->route('home.beranda')
-                             ->with('success', 'Berhasil logout!');
+                ->with('success', 'Berhasil logout!');
         })->name('logout');
     });
 
     Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'destroy']);
     });
-    
+
 
     Route::get('/admin', [UserController::class, 'index']);
 });
 Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('beasiswa.show');
+Route::get('/beasiswa/tambah', [BeasiswaController::class, 'create'])->name('admin.tambah');
+Route::post('/beasiswa', [BeasiswaController::class, 'store'])->name('beasiswa.store');
+Route::get('/beasiswa/{id}/edit', [BeasiswaController::class, 'edit'])->name('beasiswa.edit');
+Route::put('/beasiswa/{id}', [BeasiswaController::class, 'update'])->name('beasiswa.update');
+Route::delete('/beasiswa/{id}', [BeasiswaController::class, 'destroy'])->name('beasiswa.destroy');

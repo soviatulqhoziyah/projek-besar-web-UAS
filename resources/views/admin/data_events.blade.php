@@ -9,7 +9,15 @@
             </div>
         @endif
 
-        <h2 class="mb-4">Data Kegiatan</h2>
+        @auth
+            @if (Auth::user()->role === 'super_admin')
+                <a href="{{ route('admin.events.create') }}" class="btn btn-primary">
+                    <i class="fas fa-graduation-cap me-2"></i>Tambahkan Beasiswa
+                </a>
+            @endif
+        @endauth
+
+        <h2 class="mb-2">Data Kegiatan</h2>
 
         <style>
             .table td.ellipsis {
@@ -47,7 +55,7 @@
                         <td>
                             @if ($event->image)
                                 <img src="{{ asset('storage/' . $event->image) }}" alt="{{ $event->nama_kegiatan }}"
-                                     style="max-width:80px; max-height:80px;">
+                                    style="max-width:80px; max-height:80px;">
                             @endif
                         </td>
 
@@ -64,17 +72,18 @@
                         {{-- Aksi --}}
                         <td class="text-nowrap">
                             <div class="d-flex gap-1 justify-content-center">
-                                <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                        
+                                <a href="{{ route('admin.events.edit', $event->id) }}"
+                                    class="btn btn-sm btn-primary">Edit</a>
+
                                 <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST"
-                                      onsubmit="return confirm('Yakin ingin menghapus?');">
+                                    onsubmit="return confirm('Yakin ingin menghapus?');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                 </form>
                             </div>
                         </td>
-                        
+
                     </tr>
                 @empty
                     <tr>
