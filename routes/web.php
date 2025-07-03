@@ -117,3 +117,4 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
+Route::get('/admin/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
