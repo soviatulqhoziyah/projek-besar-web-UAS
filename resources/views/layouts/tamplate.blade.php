@@ -253,6 +253,12 @@
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('home.homepage') ? 'active' : '' }}"
                                 href="{{ route('home.homepage') }}">
+                                <i class="fas fa-calendar-alt me-1"></i>Beasiswa
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('home.homepage') ? 'active' : '' }}"
+                                href="{{ route('home.homepage') }}">
                                 <i class="fas fa-calendar-alt me-1"></i>Events
                             </a>
                         </li>
