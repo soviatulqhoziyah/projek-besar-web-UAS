@@ -5,9 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\BeasiswaController;
 use App\Http\Middleware\AdminRoleMiddleware;
-use App\Http\Controllers\SoviaEventController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\SoviaEventController;
 
 
 
@@ -93,5 +94,6 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
     
 
     Route::get('/admin', [UserController::class, 'index']);
-
 });
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('beasiswa.show');

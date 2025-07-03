@@ -251,8 +251,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('home.homepage') ? 'active' : '' }}"
-                                href="{{ route('home.homepage') }}">
+                            <a class="nav-link {{ request()->routeIs('beasiswa.index') ? 'active' : '' }}"
+                                href="{{ route('beasiswa.index') }}">
                                 <i class="fas fa-calendar-alt me-1"></i>Beasiswa
                             </a>
                         </li>
