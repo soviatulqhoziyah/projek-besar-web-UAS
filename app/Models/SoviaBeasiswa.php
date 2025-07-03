@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class SoviaBeasiswa extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'judul',
         'deskripsi',
@@ -17,6 +15,4 @@ class SoviaBeasiswa extends Model
         'poster',
         'link_daftar',
     ];
-
-    protected $table = 'sovia_beasiswas';
 }

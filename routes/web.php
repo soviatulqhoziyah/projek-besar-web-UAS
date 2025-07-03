@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\BeasiswaController;
+use App\Http\Controllers\Admin\BeasiswaController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SoviaEventController;
@@ -95,10 +95,10 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
 
     Route::get('/admin', [UserController::class, 'index']);
 });
-Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+// Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('beasiswa.show');
-Route::get('/beasiswa/tambah', [BeasiswaController::class, 'create'])->name('admin.tambah');
-Route::post('/beasiswa', [BeasiswaController::class, 'store'])->name('beasiswa.store');
+// Route::get('/beasiswa/tambah', [BeasiswaController::class, 'create'])->name('admin.tambah');
+// Route::post('/beasiswa', [BeasiswaController::class, 'store'])->name('beasiswa.store');
 Route::get('/beasiswa/{id}/edit', [BeasiswaController::class, 'edit'])->name('beasiswa.edit');
 Route::put('/beasiswa/{id}', [BeasiswaController::class, 'update'])->name('beasiswa.update');
 Route::delete('/beasiswa/{id}', [BeasiswaController::class, 'destroy'])->name('beasiswa.destroy');
@@ -106,5 +106,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
 Route::get('/data-beasiswa', [BeasiswaController::class, 'index'])->name('admin.data_beasiswa');
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::resource('beasiswa', BeasiswaController::class);
+});
 
-    
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::resource('beasiswa', BeasiswaController::class);
+});
+Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('beasiswa', BeasiswaController::class);
+});
