@@ -122,10 +122,10 @@
     
         <div class="mt-4">
             <a href="{{ route('beasiswa.index') }}" class="btn-outline">
-                <i class="fas fa-graduation-cap me-2"></i>Lihat Beasiswa
+                <i class="fas fa-graduation-cap me-2"></i>Beasiswa
             </a>
             <a href="{{ route('home.homepage') }}" class="btn-gradient">
-                <i class="fas fa-calendar-alt me-2"></i>Lihat Event
+                <i class="fas fa-calendar-alt me-2"></i>Event
             </a>
             
             <a href="{{ route('home.kontak') }}" class="btn-outline">

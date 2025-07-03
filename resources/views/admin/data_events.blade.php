@@ -12,7 +12,7 @@
         @auth
             @if (Auth::user()->role === 'super_admin')
                 <a href="{{ route('admin.events.create') }}" class="btn btn-primary">
-                    <i class="fas fa-graduation-cap me-2"></i>Tambahkan Beasiswa
+                    <i class="fas fa-graduation-cap me-2"></i>Tambahkan Event
                 </a>
             @endif
         @endauth

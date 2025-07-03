@@ -304,6 +304,16 @@
                             </li>
                         @endif
 
+                        @if (Auth::user()->role === 'admin' || Auth::user()->role === 'super_admin')
+                        {{-- Admin dan Super Admin hanya bisa lihat menu admin --}}
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.data_beasiswa') ? 'active' : '' }}"
+                                href="{{ route('admin.data_beasiswa') }}">
+                                <i class="fas fa-database me-1"></i>Data Beasiswa
+                            </a>
+                        </li>
+                    @endif
+
                         @if (Auth::user()->role === 'super_admin')
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('admin.users.index') ? 'active' : '' }}"
