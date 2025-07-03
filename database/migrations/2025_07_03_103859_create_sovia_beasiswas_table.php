@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sovia_beasiswa', function (Blueprint $table) {
+        Schema::create('sovia_beasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
             $table->text('deskripsi');
             $table->date('tanggal_mulai');
             $table->date('tanggal_berakhir');
+            $table->string('poster')->nullable();
             $table->string('link_daftar')->nullable();
             $table->timestamps();
         });
