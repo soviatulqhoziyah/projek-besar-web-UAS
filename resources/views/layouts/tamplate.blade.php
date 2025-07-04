@@ -326,13 +326,13 @@
                 </ul>
 
                 <div class="d-flex align-items-center gap-2">
-                    <form class="d-flex" action="{{ route('home.homepage') }}" method="GET">
+                    {{-- <form class="d-flex" action="{{ route('home.homepage') }}" method="GET">
                         <input class="form-control search-input" type="search" name="q"
                             placeholder="Cari event..." value="{{ request('q') }}">
                         <button class="btn btn-search ms-2" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
-                    </form>
+                    </form> --}}
                     @auth
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

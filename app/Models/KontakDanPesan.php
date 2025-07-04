@@ -9,7 +9,7 @@ class KontakDanPesan extends Model
 {
     use HasFactory;
 
-    protected $table = 'kontak_dan_pesan'; // sesuai nama tabel di database
+    protected $table = 'sovia_kontakpesan'; // sesuai nama tabel di database
 
     // Jika kamu hanya ingin pakai ::all(), ini saja sudah cukup.
     // Tambahan opsional:

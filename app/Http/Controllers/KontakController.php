@@ -24,6 +24,6 @@ class KontakController extends Controller
 
     KontakDanPesan::create($request->all());
 
-    return redirect()->route('home.kontak')->with('success', 'Pesan berhasil dikirim!');
+    return redirect()->route('home.kontak')->with('success', 'Terima kasih telah menyampaikan aspirasi Anda. Pesan Anda telah berhasil dikirim dan akan segera ditindaklanjuti oleh tim kami.');
 }
 }
