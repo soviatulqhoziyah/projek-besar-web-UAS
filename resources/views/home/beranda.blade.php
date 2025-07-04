@@ -121,7 +121,7 @@
         </p>
     
         <div class="mt-4">
-            <a href="{{ route('beasiswa.index') }}" class="btn-outline">
+            <a href="{{ route('home.beasiswa') }}" class="btn-outline">
                 <i class="fas fa-graduation-cap me-2"></i>Beasiswa
             </a>
             <a href="{{ route('home.homepage') }}" class="btn-gradient">

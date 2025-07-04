@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\Admin\BeasiswaController;
+use App\Http\Controllers\BeasiswaController;
 use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SoviaEventController;
+use App\Http\Controllers\Admin\BeasiswaController as AdminBeasiswaController;
+
 
 
 
@@ -118,3 +120,15 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('
     Route::resource('beasiswa', BeasiswaController::class);
 });
 Route::get('/admin/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
+
+Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
+    Route::get('/beasiswa', [AdminBeasiswaController::class, 'index'])->name('admin.beasiswa.index');
+    Route::get('/beasiswa/create', [AdminBeasiswaController::class, 'create'])->name('admin.beasiswa.create');
+    Route::post('/beasiswa', [AdminBeasiswaController::class, 'store'])->name('admin.beasiswa.store');
+    Route::get('/beasiswa/{id}/edit', [AdminBeasiswaController::class, 'edit'])->name('admin.beasiswa.edit');
+    Route::put('/beasiswa/{id}', [AdminBeasiswaController::class, 'update'])->name('admin.beasiswa.update');
+    Route::delete('/beasiswa/{id}', [AdminBeasiswaController::class, 'destroy'])->name('admin.beasiswa.destroy');
+});
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
+Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('home.beasiswa.detail');
