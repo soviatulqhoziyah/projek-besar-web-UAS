@@ -11,16 +11,12 @@ class BeasiswaController extends Controller
     {
         $beasiswas = SoviaBeasiswa::latest()->paginate(6);
         return view('home.beasiswa', compact('beasiswas'));
+    }
 
-        $beasiswas = SoviaBeasiswa::latest()->paginate(10);
-        return view('admin.data_beasiswa', compact('beasiswas'));
-
-        $beasiswas = SoviaBeasiswa::latest()->paginate(6);
-        return view('home.beasiswa', compact('beasiswas'));
-
+    public function show($id)
+    {
         $beasiswa = SoviaBeasiswa::findOrFail($id);
         return view('home.beasiswa_detail', compact('beasiswa'));
-
-        
     }
+
 }

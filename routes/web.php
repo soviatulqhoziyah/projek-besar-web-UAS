@@ -107,7 +107,6 @@ Route::delete('/beasiswa/{id}', [BeasiswaController::class, 'destroy'])->name('b
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
-Route::get('/data-beasiswa', [BeasiswaController::class, 'index'])->name('admin.data_beasiswa');
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
@@ -122,13 +121,6 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('
 Route::get('/admin/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
 Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 
-Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
-    Route::get('/beasiswa', [AdminBeasiswaController::class, 'index'])->name('admin.beasiswa.index');
-    Route::get('/beasiswa/create', [AdminBeasiswaController::class, 'create'])->name('admin.beasiswa.create');
-    Route::post('/beasiswa', [AdminBeasiswaController::class, 'store'])->name('admin.beasiswa.store');
-    Route::get('/beasiswa/{id}/edit', [AdminBeasiswaController::class, 'edit'])->name('admin.beasiswa.edit');
-    Route::put('/beasiswa/{id}', [AdminBeasiswaController::class, 'update'])->name('admin.beasiswa.update');
-    Route::delete('/beasiswa/{id}', [AdminBeasiswaController::class, 'destroy'])->name('admin.beasiswa.destroy');
-});
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('home.beasiswa.detail');

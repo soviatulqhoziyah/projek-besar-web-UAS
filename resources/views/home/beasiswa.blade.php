@@ -232,12 +232,12 @@
                             </div>
 
                             {{-- Tombol Detail --}}
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <a href="{{ route('home.beasiswa.detail', $bws->id) }}" class="btn"
                                     style="background:#f3b90b; color:white;">
                                     <i class="fas fa-info-circle"></i> Detail
                                 </a>
-                            </div>
+                            </div> --}}
 
                             {{-- Aksi admin --}}
                             @can('isAdmin')
