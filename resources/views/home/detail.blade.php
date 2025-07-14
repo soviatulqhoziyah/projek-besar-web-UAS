@@ -284,6 +284,7 @@
         grid-template-columns: 1fr;
     }
 }
+
 </style>
 
 <div class="event-detail-container">
@@ -413,34 +414,9 @@
                     <p>{{ $event->contact_person }}</p>
                 </div>
                 
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $event->contact_person) }}" 
-                   class="btn-modern btn-whatsapp" 
-                   style="width: 100%; justify-content: center; margin-top: 15px;"
-                   target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>Chat WhatsApp</span>
-                </a>
             </div>
 
-            <!-- Quick Actions Card -->
-            <div class="info-card">
-                <h4>
-                    <i class="fas fa-bolt"></i>
-                    Aksi Cepat
-                </h4>
-                
-                <div style="display: flex; flex-direction: column; gap: 10px;">
-                    <a href="#" class="btn-modern btn-primary" style="justify-content: center;">
-                        <i class="fas fa-download"></i>
-                        <span>Download Brosur</span>
-                    </a>
-                    
-                    <a href="#" class="btn-modern btn-secondary" style="justify-content: center;">
-                        <i class="fas fa-share-alt"></i>
-                        <span>Bagikan Event</span>
-                    </a>
-                </div>
-            </div>
+           
         </div>
     </div>
 </div>

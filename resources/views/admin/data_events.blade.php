@@ -37,11 +37,11 @@
                     <th>Deskripsi</th>
                     <th>Tanggal</th>
                     <th>Waktu</th>
-                    <th>Tempat</th>
+                    {{-- <th>Tempat</th>
                     <th>Tgl. Pendaftaran</th>
                     <th>Insert</th>
                     <th>Kontak Person</th>
-                    <th>Benefit</th>
+                    <th>Benefit</th> --}}
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -63,11 +63,11 @@
                         <td class="ellipsis" title="{{ $event->deskripsi }}">{{ $event->deskripsi }}</td>
                         <td>{{ \Carbon\Carbon::parse($event->tanggal_kegiatan)->format('d M Y') }}</td>
                         <td>{{ $event->waktu }}</td>
-                        <td class="ellipsis" title="{{ $event->tempat }}">{{ $event->tempat }}</td>
+                        {{-- <td class="ellipsis" title="{{ $event->tempat }}">{{ $event->tempat }}</td>
                         <td>{{ $event->tanggal_pendaftaran }}</td>
                         <td class="ellipsis" title="{{ $event->insert }}">{{ $event->insert }}</td>
                         <td class="ellipsis" title="{{ $event->contact_person }}">{{ $event->contact_person }}</td>
-                        <td class="ellipsis" title="{{ $event->benefitnya }}">{{ $event->benefitnya }}</td>
+                        <td class="ellipsis" title="{{ $event->benefitnya }}">{{ $event->benefitnya }}</td> --}}
 
                         {{-- Aksi --}}
                         <td class="text-nowrap">

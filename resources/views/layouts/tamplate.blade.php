@@ -305,14 +305,15 @@
                             </li>
                         @endif
 
-                        {{-- @if (Auth::user()->role === 'admin' || Auth::user()->role === 'super_admin')
+                        @if (Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'super_admin'))
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('admin.data_beasiswa') ? 'active' : '' }}"
-                                    href="{{ route('admin.data_beasiswa') }}">
-                                    <i class="fas fa-database me-1"></i>Data Beasiswa
+                                <a class="nav-link {{ request()->is('admin/data_beasiswa*') ? 'active' : '' }}"
+                                    href="{{ route('data_beasiswa.index') }}">
+                                    <i class="fas fa-database me-1"></i> Data Beasiswa
                                 </a>
                             </li>
-                        @endif --}}
+                        @endif
+
 
                         @if (Auth::user()->role === 'super_admin')
                             <li class="nav-item">
