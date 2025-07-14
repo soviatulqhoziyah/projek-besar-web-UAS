@@ -10,6 +10,7 @@ use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SoviaEventController;
 use App\Http\Controllers\Admin\SoviaBeasiswaController;
+use App\Http\Controllers\Admin\SoviaPendaftaranController;
 use App\Http\Controllers\Admin\BeasiswaController as AdminBeasiswaController;
 
 
@@ -130,5 +131,8 @@ Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('home.be
 Route::middleware(['auth'])->group(function () {
     Route::resource('admin/data_beasiswa', SoviaBeasiswaController::class);
 });
+
+Route::get('/event/{event}/daftar', [PendaftaranController::class, 'form'])->name('daftar.form');
+Route::post('/event/{event}/daftar', [PendaftaranController::class, 'submit'])->name('daftar.submit');
 
 
