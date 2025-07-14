@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('sovia_pembayarans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pendaftar_id')->constrained()->onDelete('cascade');
+            $table->foreignId('pendaftar_id')->constrained('sovia_pendaftars')->onDelete('cascade');
             $table->string('metode_pembayaran');
             $table->integer('jumlah');
-            $table->string('bukti_transfer')->nullable(); // path image
+            $table->string('bukti_transfer')->nullable();
             $table->enum('status', ['menunggu', 'valid', 'tidak_valid'])->default('menunggu');
             $table->timestamp('tanggal_bayar')->nullable();
             $table->timestamps();
