@@ -168,89 +168,96 @@
             <div class="row g-4">
                 <!-- Informasi Kontak -->
                 <div class="col-lg-5">
-                    <div class="contact-card h-100">
-                        <h4 class="text-warning mb-3">
+                    <div class="contact-card h-100" style="background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgb(0 0 0 / 0.1);">
+                        <h4 class="text-warning mb-4" style="color: #6f1e51; font-weight: 700;">
                             <i class="fas fa-info-circle me-2"></i>Informasi Kontak
                         </h4>
-
-                        <div class="info-item">
-                            <h5><i class="fas fa-map-marker-alt me-2"></i>Alamat</h5>
-                            <p>
-                                <a href="https://maps.google.com/?q=Politeknik+Negeri+Padang,+Limau+Manis,+Kecamatan+Pauh,+Kota+Padang,+25164"
-                                    target="_blank">
+    
+                        <div class="info-item mb-4">
+                            <h5 style="font-weight: 600; color: #222;">
+                                <i class="fas fa-map-marker-alt me-2" style="color: #f9ca24;"></i>Alamat
+                            </h5>
+                            <p style="font-size: 1rem; color: #444;">
+                                <a href="https://maps.google.com/?q=Politeknik+Negeri+Padang,+Limau+Manis,+Kecamatan+Pauh,+Kota+Padang,+25164" target="_blank" style="color: #d77f12; text-decoration: none; font-weight: 500;">
                                     <strong>Kampus Politeknik Negeri Padang</strong><br>
                                     Limau Manis, Kecamatan Pauh, Kota Padang, 25164
                                     <i class="fas fa-external-link-alt ms-2"></i>
                                 </a>
                             </p>
                         </div>
-
-                        <div class="info-item">
-                            <h5><i class="fas fa-phone me-2"></i>Telepon</h5>
-                            <p>
-                                <a href="tel:+62751072590">Telp. (0751) 72590</a><br>
-                                <span class="text-muted">Fax. (0751) 72576</span>
+    
+                        <div class="info-item mb-4">
+                            <h5 style="font-weight: 600; color: #222;">
+                                <i class="fas fa-phone me-2" style="color: #f9ca24;"></i>Telepon
+                            </h5>
+                            <p style="font-size: 1rem; color: #444;">
+                                <a href="tel:+62751072590" style="color: #d77f12; text-decoration: none;">Telp. (0751) 72590</a><br>
+                                <span class="text-muted" style="color: #999;">Fax. (0751) 72576</span>
                             </p>
                         </div>
-
+    
                         <div class="info-item">
-                            <h5><i class="fas fa-envelope me-2"></i>Email</h5>
-                            <p>
-                                <a href="mailto:spm@pnp.ac.id">spm@pnp.ac.id</a>
+                            <h5 style="font-weight: 600; color: #222;">
+                                <i class="fas fa-envelope me-2" style="color: #f9ca24;"></i>Email
+                            </h5>
+                            <p style="font-size: 1rem;">
+                                <a href="mailto:spm@pnp.ac.id" style="color: #d77f12; text-decoration: none;">spm@pnp.ac.id</a>
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Form Kontak -->
-                <div class="col-lg-7">
-                    <div class="contact-card h-100">
-                        <h4 class="text-warning mb-3">
+                 <!-- Form Kontak -->
+            <div class="col-lg-7">
+                <div class="contact-card h-100" style="background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 8px 25px rgb(0 0 0 / 0.1);">
+                    <h4 class="text-warning mb-4" style="color: #d78016; font-weight: 700;">
+                        <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
+                    </h4>
+
+                    <p style="color: #555; margin-bottom: 25px; font-style: italic;">
+                        Sampaikan saran, masukkan, atau keluh kesah Anda. Kami akan mendengarkan dan merespon dengan sepenuh hati!
+                    </p>
+
+                    <form action="{{ route('kontak.kirim') }}" method="POST" novalidate>
+                        @csrf
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input type="text" name="nama" class="form-control form-control-lg" placeholder="Nama Lengkap" required style="border-radius: 8px; border: 1.5px solid #d78016; transition: border-color 0.3s;">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="email" name="email" class="form-control form-control-lg" placeholder="Email" required style="border-radius: 8px; border: 1.5px solid #d78016; transition: border-color 0.3s;">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" name="subject" class="form-control form-control-lg" placeholder="Subjek" required style="border-radius: 8px; border: 1.5px solid #d78016; transition: border-color 0.3s;">
+                        </div>
+
+                        <div class="mb-4">
+                            <textarea name="pesan" rows="5" class="form-control form-control-lg" placeholder="Pesan Anda..." required style="border-radius: 8px; border: 1.5px solid #d78016; transition: border-color 0.3s;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-lg" style="background: #ffa304; color: #fff; border-radius: 8px; font-weight: 700; width: 100%; box-shadow: 0 6px 12px rgb(111 30 81 / 0.4); transition: background 0.3s;">
                             <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
-                        </h4>
+                        </button>
+                    </form>
 
-                        <form action="{{ route('kontak.kirim') }}" method="POST">
-                            @csrf
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <input type="text" name="nama" class="form-control" placeholder="Nama Lengkap"
-                                        required>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" name="email" class="form-control" placeholder="Email" required>
-                                </div>
-                            </div>
-
-                            <div class="mb-3">
-                                <input type="text" name="subject" class="form-control" placeholder="Subjek" required>
-                            </div>
-
-                            <div class="mb-3">
-                                <textarea name="pesan" rows="4" class="form-control" placeholder="Pesan Anda..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary-gold">
-                                <i class="fas fa-paper-plane me-2"></i>Kirim Pesan
-                            </button>
-                        </form>
-                        @if (session('success'))
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Berhasil!',
-                                        text: '{{ session('success') }}',
-                                        confirmButtonText: 'Tutup',
-                                        confirmButtonColor: '#f9ca24',
-                                        backdrop: true
-                                    });
+                    @if (session('success'))
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Berhasil!',
+                                    text: '{{ session('success') }}',
+                                    confirmButtonText: 'Tutup',
+                                    confirmButtonColor: '#6f1e51',
+                                    backdrop: true
                                 });
-                            </script>
-                        @endif
-                    </div>
+                            });
+                        </script>
+                    @endif
                 </div>
             </div>
         </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-@endsection
+    </div>
+</section>
