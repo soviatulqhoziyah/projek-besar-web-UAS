@@ -172,7 +172,7 @@ body{
 
                     <div class="event-content">
                         <h3 class="event-title">{{ $event->nama_kegiatan }}</h3>
-                        <p class="event-description">{{ $event->deskripsi }}</p>
+                        {{-- <p class="event-description">{{ $event->deskripsi }}</p> --}}
 
                         <div class="event-details">
                             <div class="detail-item">
