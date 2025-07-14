@@ -363,7 +363,7 @@
                 
                 <a href="{{ route('home.homepage') }}" class="btn-modern btn-secondary">
                     <i class="fas fa-arrow-left"></i>
-                    <span>Kembali</span>
+                    <span>Kembali ke Beranda</span>
                 </a>
             </div>
         </div>
