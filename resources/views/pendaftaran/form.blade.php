@@ -115,21 +115,22 @@ h1 {
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-bottom: 1rem;">
             <input type="text" name="no_hp" class="form-input" 
                    placeholder="No HP" value="{{ old('no_hp') }}">
             @error('no_hp') 
                 <div class="error-msg">{{ $message }}</div> 
             @enderror
         </div>
-
-        <div class="form-group">
+        
+        <div class="form-group" style="margin-bottom: 1rem;">
             <input type="text" name="instansi" class="form-input" 
                    placeholder="Instansi (Opsional)" value="{{ old('instansi') }}">
             @error('instansi') 
                 <div class="error-msg">{{ $message }}</div> 
             @enderror
         </div>
+        
 
         <button type="submit" class="submit-btn">✈️ Daftar</button>
     </form>

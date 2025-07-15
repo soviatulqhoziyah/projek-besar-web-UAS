@@ -98,7 +98,7 @@
     </style>
 
     <div class="form-container">
-        <h1>Form Pembayaran Tiket</h1>
+        <h1>Form Pembayaran Insert</h1>
 
         @if (session('success'))
             <div class="success-msg">{{ session('success') }}</div>
@@ -112,6 +112,7 @@
 
                 <div class="form-group">
                     <select name="metode_pembayaran" class="form-select" required>
+                        {{-- <label for="jumlah">Metode Pembayaran</label> --}}
                         <option value="">-- Pilih Metode --</option>
                         <option value="Transfer Bank">Transfer Bank</option>
                         <option value="E-Wallet">E-Wallet</option>
