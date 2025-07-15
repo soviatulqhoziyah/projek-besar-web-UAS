@@ -36,7 +36,7 @@ class SoviaPembayaranController extends Controller
 
         SoviaPembayaran::create($data);
 
-        return redirect()->route('ticket.create', ['pendaftar_id' => $request->pendaftar_id]);
+        return redirect()->route('tiket.show', ['pendaftar_id' => $request->pendaftar_id]);
 
     }
 }

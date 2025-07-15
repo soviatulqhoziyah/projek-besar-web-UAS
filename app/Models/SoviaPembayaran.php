@@ -27,4 +27,6 @@ class SoviaPembayaran extends Model
     {
         return $this->belongsTo(SoviaPendaftar::class, 'pendaftar_id');
     }
+
+    
 }
