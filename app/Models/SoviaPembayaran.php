@@ -9,8 +9,10 @@ class SoviaPembayaran extends Model
 {
     use HasFactory;
 
+    // Nama tabel yang digunakan
     protected $table = 'sovia_pembayarans';
 
+    // Kolom yang boleh diisi (mass assignment)
     protected $fillable = [
         'pendaftar_id',
         'metode_pembayaran',
@@ -20,6 +22,7 @@ class SoviaPembayaran extends Model
         'tanggal_bayar',
     ];
 
+    // Relasi ke model SoviaPendaftar (setiap pembayaran milik satu pendaftar)
     public function pendaftar()
     {
         return $this->belongsTo(SoviaPendaftar::class, 'pendaftar_id');

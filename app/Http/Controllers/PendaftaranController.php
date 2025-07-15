@@ -8,20 +8,27 @@ use Illuminate\Http\Request;
 
 class PendaftaranController extends Controller
 {
-    /* ========== TAMPILKAN FORM ========== */
+    /**
+     * Tampilkan form pendaftaran berdasarkan ID event
+     */
     public function form($id)
     {
-        // 404 otomatis kalau id tidak ketemu
+        // Cari event berdasarkan ID, kalau tidak ketemu akan 404
         $event = Event::findOrFail($id);
 
+        // Kirim data event ke view pendaftaran
         return view('pendaftaran.form', compact('event'));
     }
 
-    /* ========== SIMPAN DATA ============= */
+    /**
+     * Proses submit pendaftaran dan redirect ke form pembayaran
+     */
     public function submit(Request $request, $id)
     {
+        // Cari event berdasarkan ID
         $event = Event::findOrFail($id);
 
+        // Validasi input dari user
         $request->validate([
             'nama_lengkap' => 'required|string|max:255',
             'email'        => 'required|email|max:255',
@@ -29,7 +36,8 @@ class PendaftaranController extends Controller
             'instansi'     => 'nullable|string|max:255',
         ]);
 
-        SoviaPendaftar::create([
+        // Simpan data pendaftar ke database
+        $pendaftar = SoviaPendaftar::create([
             'event_id'           => $event->id,
             'nama_lengkap'       => $request->nama_lengkap,
             'email'              => $request->email,
@@ -39,6 +47,9 @@ class PendaftaranController extends Controller
             'status_pembayaran'  => 'belum',
         ]);
 
-        return back()->with('success', 'Pendaftaran berhasil dikirim!');
+        // Redirect ke form pembayaran dengan pendaftar_id
+        return redirect()->route('pembayaran.create', ['pendaftar_id' => $pendaftar->id]);
     }
+
+    
 }

@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Storage;
 
 class SoviaPembayaranController extends Controller
 {
-    public function create()
+    public function create($pendaftar_id)
     {
-        $pendaftars = SoviaPendaftar::all();
-        return view('pendaftaran.pembayaran', compact('pendaftars'));
+        $pendaftar = SoviaPendaftar::with('event')->findOrFail($pendaftar_id);
+        return view('pendaftaran.pembayaran', compact('pendaftar'));
     }
 
     public function store(Request $request)
@@ -36,6 +36,7 @@ class SoviaPembayaranController extends Controller
 
         SoviaPembayaran::create($data);
 
-        return redirect()->back()->with('success', 'Pembayaran berhasil dikirim.');
+        return redirect()->route('ticket.create', ['pendaftar_id' => $request->pendaftar_id]);
+
     }
 }

@@ -142,5 +142,5 @@ Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'form'])->name('p
 Route::post('/pendaftaran/{id}', [PendaftaranController::class, 'submit'])->name('pendaftaran.submit');
 Route::get('/ticket/create', [SoviaTicketController::class, 'create'])->name('ticket.create');
 Route::post('/ticket', [SoviaTicketController::class, 'store'])->name('ticket.store');
-Route::get('/pembayaran/create', [SoviaPembayaranController::class, 'create'])->name('pembayaran.create');
+Route::get('/pembayaran/create/{pendaftar_id}', [SoviaPembayaranController::class, 'create'])->name('pembayaran.create');
 Route::post('/pembayaran', [SoviaPembayaranController::class, 'store'])->name('pembayaran.store');

@@ -23,4 +23,9 @@ class Event extends Model
         'contact_person',
         'benefitnya',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Event::class, 'event_id');
+    }
 }
