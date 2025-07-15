@@ -193,7 +193,7 @@ body{
                             <a href="{{ route('home.detail',$event->id) }}" class="btn-modern btn-outline">
                                 <i class="fas fa-info-circle me-2"></i>Detail
                             </a>
-                            <a href="#" class="btn-modern btn-primary">
+                            <a href="{{ route('pendaftaran.form',$event->id) }}" class="btn-modern btn-primary">
                                 <i class="fas fa-user-plus me-2"></i>Daftar Sekarang
                             </a>
                         </div>

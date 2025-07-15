@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('sovia_pendaftars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->foreignId('event_id')
+      ->constrained('sovie_events')
+      ->onDelete('cascade');
+
             $table->string('nama_lengkap');
             $table->string('email');
             $table->string('no_hp');

@@ -21,10 +21,10 @@ class SoviaPendaftar extends Model
         'status_pembayaran',
     ];
 
-    public function event()
-    {
-        return $this->belongsTo(Event::class);
-    }
+    // public function event()
+    // {
+    //     return $this->belongsTo(Event::class);
+    // }
 
     public function pembayarans()
     {
@@ -35,4 +35,10 @@ class SoviaPendaftar extends Model
     {
         return $this->hasOne(SoviaTicket::class, 'pendaftar_id');
     }
+
+    public function event()
+{
+    return $this->belongsTo(Event::class, 'event_id');
 }
+}
+
