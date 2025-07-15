@@ -10,6 +10,7 @@ use App\Http\Middleware\AdminRoleMiddleware;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\SoviaEventController;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\SoviaTicketController;
 use App\Http\Controllers\Admin\SoviaBeasiswaController;
 use App\Http\Controllers\Admin\SoviaPendaftaranController;
 use App\Http\Controllers\Admin\BeasiswaController as AdminBeasiswaController;
@@ -138,3 +139,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'form'])->name('pendaftaran.form');
 Route::post('/pendaftaran/{id}', [PendaftaranController::class, 'submit'])->name('pendaftaran.submit');
+Route::get('/ticket/create', [SoviaTicketController::class, 'create'])->name('ticket.create');
+Route::post('/ticket', [SoviaTicketController::class, 'store'])->name('ticket.store');
