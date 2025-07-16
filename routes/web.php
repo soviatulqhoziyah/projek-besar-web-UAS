@@ -19,14 +19,6 @@ use App\Http\Controllers\Admin\BeasiswaController as AdminBeasiswaController;
 
 
 
-/* -----------------------------------------------------------
-|  PUBLIC
-|------------------------------------------------------------
-*/
-Route::get('/tes', function () {
-    return 'ROUTE TES MASUK';
-});
-
 // ⇢ Kunjungan pertama langsung ke beranda
 Route::get('/', function () {
     return view('home.beranda');
@@ -53,11 +45,10 @@ Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.kirim')
 |  AUTH
 |------------------------------------------------------------
 */
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');      
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 /* -----------------------------------------------------------
 |  ADMIN ‑ only
 |------------------------------------------------------------
@@ -76,12 +67,7 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
             ->with('success', 'Berhasil logout!');
     })->name('logout');
 
-    /* ---- grup prefix /admin -------------------------------- */
-
-
     Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
-
-
         Route::get('/data_events', [AdminController::class, 'data'])
             ->name('data_events');
 
@@ -97,21 +83,19 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
                 ->with('success', 'Berhasil logout!');
         })->name('logout');
     });
-
     Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('admin.')->group(function () {
         Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'destroy']);
     });
-
-
     Route::get('/admin', [UserController::class, 'index']);
 });
-// Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
+
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('beasiswa.show');
-// Route::get('/beasiswa/tambah', [BeasiswaController::class, 'create'])->name('admin.tambah');
-// Route::post('/beasiswa', [BeasiswaController::class, 'store'])->name('beasiswa.store');
 Route::get('/beasiswa/{id}/edit', [BeasiswaController::class, 'edit'])->name('beasiswa.edit');
 Route::put('/beasiswa/{id}', [BeasiswaController::class, 'update'])->name('beasiswa.update');
 Route::delete('/beasiswa/{id}', [BeasiswaController::class, 'destroy'])->name('beasiswa.destroy');
+
+
+//ADMIN
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
@@ -119,7 +103,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
 
-
+//ADMIN
 Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('beasiswa', BeasiswaController::class);
 });
@@ -127,21 +111,30 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->prefix('admin')->name('
     Route::resource('beasiswa', BeasiswaController::class);
 });
 Route::get('/admin/beasiswa', [BeasiswaController::class, 'index'])->name('beasiswa.index');
-Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 
+//BEASISWA
+Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 Route::get('/beasiswa', [BeasiswaController::class, 'index'])->name('home.beasiswa');
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('home.beasiswa.detail');
 
-
+//ADMIN
 Route::middleware(['auth'])->group(function () {
     Route::resource('admin/data_beasiswa', SoviaBeasiswaController::class);
 });
 
+// Route::get('/admin/data_beasiswa', [BeasiswaController::class, 'index'])
+//     ->middleware('auth')
+//     ->name('admin.data_beasiswa');
+
+
+//PENDAFTARAN DAN PEMBAYARAN
 Route::get('/pendaftaran/{id}', [PendaftaranController::class, 'form'])->name('pendaftaran.form');
 Route::post('/pendaftaran/{id}', [PendaftaranController::class, 'submit'])->name('pendaftaran.submit');
-// Route::get('/ticket/create', [SoviaTicketController::class, 'create'])->name('ticket.create');
-// Route::post('/ticket', [SoviaTicketController::class, 'store'])->name('ticket.store');
 Route::get('/pembayaran/create/{pendaftar_id}', [SoviaPembayaranController::class, 'create'])->name('pembayaran.create');
 Route::post('/pembayaran', [SoviaPembayaranController::class, 'store'])->name('pembayaran.store');
 Route::get('/tiket/{pendaftar_id}', [SoviaTicketController::class, 'show'])->name('tiket.show');
+
+Route::get('/admin/pendaftars', [PendaftaranController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.pendaftars.index'); 

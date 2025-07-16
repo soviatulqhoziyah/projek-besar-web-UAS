@@ -46,4 +46,10 @@ class SoviaPendaftar extends Model
     {
         return $this->hasOne(SoviaPembayaran::class, 'pendaftar_id');
     }
+
+    public function index()
+{
+    $pendaftars = SoviaPendaftar::with('event')->latest()->get();
+    return view('admin.pendaftars.index', compact('pendaftars'));
+}
 }

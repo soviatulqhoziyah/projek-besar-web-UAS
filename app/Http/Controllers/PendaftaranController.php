@@ -18,6 +18,9 @@ class PendaftaranController extends Controller
 
         // Kirim data event ke view pendaftaran
         return view('pendaftaran.form', compact('event'));
+
+        $pendaftars = SoviaPendaftar::with('event')->latest()->get();
+        return view('admin.pendaftars.index', compact('pendaftars'));
     }
 
     /**

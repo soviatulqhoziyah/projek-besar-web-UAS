@@ -342,7 +342,7 @@
                             </button>
                         </form>
                     @else
-                        <a href="{{ route('login.form') }}" class="btn btn-login">
+                        <a href="{{ route('login') }}" class="btn btn-login">
                             <i class="fas fa-user me-1"></i>Login
                         </a>
                     @endauth

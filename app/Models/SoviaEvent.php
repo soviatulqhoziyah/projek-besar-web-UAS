@@ -29,6 +29,8 @@ class SoviaEvent extends Model
     $events = SoviaEvent::latest()->get(); // atau ->paginate(6) jika pakai pagination
     return view('home.index', compact('events')); // pastikan blade sesuai
 }
+
+
 }
 
 
