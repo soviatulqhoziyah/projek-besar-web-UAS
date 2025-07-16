@@ -303,7 +303,31 @@
                                     <i class="fas fa-database me-1"></i>Data Events
                                 </a>
                             </li>
+                            
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.pendaftars.index') ? 'active' : '' }}"
+                                href="{{ route('admin.pendaftars.index') }}">
+                                <i class="fas fa-users me-1"></i>Data Pendaftar
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.pembayarans.index') ? 'active' : '' }}"
+                                href="{{ route('admin.pembayarans.index') }}">
+                                <i class="fas fa-money-check-alt me-1"></i>Data Pembayaran
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('admin.kontaks.index') ? 'active' : '' }}"
+                                href="{{ route('admin.kontaks.index') }}">
+                                <i class="fas fa-comments me-1"></i>Data Kontak
+                            </a>
+                        </li>
+                        
+
                         @endif
+
 
                         @if (Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'super_admin'))
                             <li class="nav-item">

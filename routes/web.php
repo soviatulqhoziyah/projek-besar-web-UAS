@@ -36,6 +36,11 @@ Route::get('/homepage', [SoviaEventController::class, 'index'])
 // Detail satu event
 Route::get('/sovia-events/{id}', [SoviaEventController::class, 'show'])
     ->name('home.detail');
+    
+Route::get('/admin/kontak', [KontakController::class, 'kontak'])
+->middleware('auth')
+->name('admin.kontaks.index');
+
 
 // Kontak
 Route::get('/kontak', [KontakController::class, 'index'])->name('home.kontak');
@@ -87,6 +92,10 @@ Route::middleware(['auth', AdminRoleMiddleware::class])->group(function () {
         Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'destroy']);
     });
     Route::get('/admin', [UserController::class, 'index']);
+    Route::get('/admin/pendaftars', [PendaftaranController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.pendaftars.index');
+
 });
 
 Route::get('/beasiswa/{id}', [BeasiswaController::class, 'show'])->name('beasiswa.show');
@@ -138,3 +147,7 @@ Route::get('/tiket/{pendaftar_id}', [SoviaTicketController::class, 'show'])->nam
 Route::get('/admin/pendaftars', [PendaftaranController::class, 'index'])
     ->middleware('auth')
     ->name('admin.pendaftars.index'); 
+
+Route::get('/admin/pembayarans', [SoviaPembayaranController::class, 'index'])
+    ->middleware('auth')
+    ->name('admin.pembayarans.index');

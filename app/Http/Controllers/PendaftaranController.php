@@ -10,7 +10,16 @@ class PendaftaranController extends Controller
 {
     /**
      * Tampilkan form pendaftaran berdasarkan ID event
+     * 
+     * 
      */
+
+     public function index()
+     {
+         $pendaftars = SoviaPendaftar::with('event')->latest()->get();
+         return view('admin.pendaftars.index', compact('pendaftars'));
+     }
+     
     public function form($id)
     {
         // Cari event berdasarkan ID, kalau tidak ketemu akan 404

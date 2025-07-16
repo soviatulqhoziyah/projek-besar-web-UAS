@@ -12,8 +12,6 @@
                 <th>Email</th>
                 <th>No HP</th>
                 <th>Instansi</th>
-                <th>Status Pendaftaran</th>
-                <th>Status Pembayaran</th>
                 <th>Event</th>
             </tr>
         </thead>
@@ -25,8 +23,6 @@
                     <td>{{ $p->email }}</td>
                     <td>{{ $p->no_hp }}</td>
                     <td>{{ $p->instansi ?? '-' }}</td>
-                    <td>{{ ucfirst($p->status_pendaftaran) }}</td>
-                    <td>{{ ucfirst($p->status_pembayaran) }}</td>
                     <td>{{ $p->event->nama_kegiatan ?? '-' }}</td>
                 </tr>
             @empty

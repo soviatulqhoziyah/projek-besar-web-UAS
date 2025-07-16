@@ -39,4 +39,11 @@ class SoviaPembayaranController extends Controller
         return redirect()->route('tiket.show', ['pendaftar_id' => $request->pendaftar_id]);
 
     }
+
+    public function index()
+{
+    $pembayarans = \App\Models\SoviaPembayaran::with('pendaftar.event')->latest()->get();
+
+    return view('admin.pembayarans.index', compact('pembayarans'));
+}
 }

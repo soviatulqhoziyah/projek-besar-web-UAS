@@ -12,6 +12,12 @@ class KontakController extends Controller
         $kontak = KontakDanPesan::paginate(10);
         return view('home.kontak', compact('kontak'));
     }
+    public function kontak()
+    {
+        $kontaks = KontakDanPesan::paginate(10);
+        return view('admin.kontaks.index', compact('kontaks'));
+    }
+
 
     public function store(Request $request)
 {
